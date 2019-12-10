@@ -1,0 +1,72 @@
+body {
+    margin: 0;
+}
+
+.classroom {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: green;
+    padding: 10px;
+    text-align: center;
+}
+
+.instructor-zone :first-child {
+    border-top-left-radius: 100px;
+    border-bottom-left-radius: 100px;
+}
+
+.instructor-zone :last-child {
+    border-top-right-radius: 100px;
+    border-bottom-right-radius: 100px;
+}
+
+.instructor-zone>* {
+    text-transform: capitalize;
+    line-height: 40px;
+}
+
+.instructor-zone {
+    background-color: blue;
+    display: flex;
+    height: 40px;
+    border-radius: 200px;
+}
+
+.podium {
+    background-color: yellow;
+    flex-basis: 200px;
+}
+
+.entrance {
+    background-color: firebrick;
+    color: white;
+    flex-basis: 200px;
+}
+
+.monitor {
+    flex: 1;
+    background-color: turquoise;
+}
+
+.desks-zone {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 10px;
+    padding: 10px;
+}
+
+.desk {
+    padding: 5px;
+    display: flex;
+    justify-content: space-around;
+    background-color: #000;
+    border: 2px solid white;
+    color: white;
+}
+
+.name-container {
+    border-radius: 200px;
+    border: 1px solid white;
+    padding: 5px;
+}
