@@ -23,6 +23,18 @@
             </div>
         </section>
     </div>
+    <section class="user-input">
+        <form onsubmit="event.preventDefault();">
+            <label>
+                Missing spots 
+                <input name="missing" id="missing" type="text" placeholder="Format: 0, 3, 10">
+            </label>
+            <button>Submit and Reshuffle</button>
+        </form>
+    </section>
+    <div class="loading-modal">
+        <img src="img/Spinner-1s-200px.svg" alt="loading spinner">
+    </div>
     <script src="js/main.js"></script>
 </body>
 

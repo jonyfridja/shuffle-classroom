@@ -5,7 +5,7 @@ body {
 .classroom {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: 70vh;
     background-color: green;
     padding: 10px;
     text-align: center;
@@ -65,8 +65,61 @@ body {
     color: white;
 }
 
+.desk.empty {
+    background-color: #fff;
+    
+}
+
 .name-container {
     border-radius: 200px;
     border: 1px solid white;
     padding: 5px;
+}
+
+.user-input {
+    background-color: #fff;
+    color: black;
+    font-size: 2rem;
+    padding: 20px;
+}
+
+.user-input button, .user-input input {
+    border-radius: 200px;
+    font-size: 1.2rem;
+    padding: 12px;
+}
+
+.user-input input {
+    width: 300px;
+}
+
+.loading-modal {
+    opacity: 0;
+    display: none;
+    transition: opacity .2s, background-color .2s;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    align-items: center;
+    justify-content: center;
+}
+
+.loading-modal :first-child {
+    transform: scale(1.1);
+    background-color: #fff;
+    width: 200px;
+    height: 200px;
+    border-radius: 20px;
+}
+
+.shown {
+    /* display: flex; */
+    opacity: 1;
+}
+
+.d-flex {
+    display: flex;
 }
