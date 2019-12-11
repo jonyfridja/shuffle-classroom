@@ -39,8 +39,8 @@ body {
 }
 
 .entrance {
-    background-color: firebrick;
-    color: white;
+    background-color: rgb(223, 100, 100);
+    color: black;
     flex-basis: 200px;
 }
 
@@ -60,7 +60,7 @@ body {
     padding: 5px;
     display: flex;
     justify-content: space-around;
-    background-color: #000;
+    background-color: rgb(124, 121, 121);
     border: 2px solid white;
     color: white;
 }
