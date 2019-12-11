@@ -25,7 +25,6 @@ function addEventListeners() {
 
     const elLoadingModal = document.querySelector('.loading-modal')
     elLoadingModal.addEventListener('transitionend', () => {
-        console.log('hiiiiiiiiii')
         if (gIsLoading) {
             elLoadingModal.classList.remove('d-flex');
             gIsLoading = false;
@@ -56,7 +55,6 @@ function hideLoading() {
 
 function onUserInputSubmit() {
     const missingSpots = document.getElementById('#missing');
-    console.log('missingSpots', missingSpots);
 }
 
 function checkIsEmptyDesk(desk) {
