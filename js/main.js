@@ -2,6 +2,8 @@ let gStudentNames = ["Alina Boshkov", "Alon Tal", "Arkadi Zvalinov", "Ben Levi",
 let gDesks = null;
 let gIsLoading = false;
 let gMissingDesks = [];
+// This constant fills the desks array to this limit
+const DESKS_IN_CLASS_COUNT = 19;
 
 function init() {
     addEventListeners();
@@ -13,6 +15,7 @@ function handleAllState() {
     shuffleCollection(gStudentNames);
     gStudentNames = studentNamesToDisplay();
     gDesks = createDesks();
+    shuffleCollection(gDesks);
     renderDesks();
 }
 
@@ -88,6 +91,7 @@ function createDesks() {
         desks.push(createDesk(leftName, rightName));
     }
     insertMissingDesks(desks);
+    completeDeskCount(desks);
     return desks;
 }
 
@@ -95,6 +99,12 @@ function insertMissingDesks(desks) {
     gMissingDesks.forEach(missingDeskIdx => {
         desks.splice(missingDeskIdx, 0, createDesk('empty', 'empty'));
     });
+}
+function completeDeskCount(desks) {
+    const desksCompleteCount = DESKS_IN_CLASS_COUNT - desks.length;
+    for (let i = 0; i < desksCompleteCount; i++) {
+        desks.push(createDesk('empty', 'empty'));
+    }
 }
 
 function getDesksCount() {
