@@ -15,7 +15,7 @@ function handleAllState() {
     shuffleCollection(gStudentNames);
     gStudentNames = studentNamesToDisplay();
     gDesks = createDesks();
-    shuffleCollection(gDesks);
+    // shuffleCollection(gDesks);
     renderDesks();
 }
 
