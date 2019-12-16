@@ -1,9 +1,9 @@
-let gStudentNames = ["Alina Boshkov", "Alon Tal", "Arkadi Zvalinov", "Ben Levi", "Ben Yager", "Coral Solomon", "Daniil Glezer", "Edgar", "Eyal Ganor", "Gilad Bergmann", "Igor", "Ilya Levin", "Lior BenHaim", "Mai Aloni", "Margad T", "Matt Gordon", "Mor Zeevi", "Nevo Kotlovsky", "Niv Leibovitch", "Ohad Avidar", "Paolo Groppi", "Roy Amar", "Shaked Katsir", "shay rosenthal", "Shmuel Elkis", "Tal Azenkot", "Tal Kabesa", "Tal Mashiah", "vlad", "Yael Fisher", "Yael Shenker", "Yanir Shaked", "Yoad Gantz"];
+let gStudentNames = ["Alina Boshkov", "Alon Tal", "Arkadi Zvalinov", "Ben Yager", "Coral Solomon", "Daniil Glezer", "Edgar", "Eyal Ganor", "Gilad Bergmann", "Igor", "Ilya Levin", "Lior BenHaim", "Mai Aloni", "Margad T", "Mor Zeevi", "Nevo Kotlovsky", "Ohad Avidar", "Paolo Groppi", "Roy Amar", "shay rosenthal", "Shmuel Elkis", "Tal Azenkot", "Tal Kabesa", "Tal Mashiah", "vlad", "Yael Fisher", "Yael Shenker", "Yanir Shaked", "Yoad Gantz"];
 let gDesks = null;
 let gIsLoading = false;
 let gMissingDesks = [];
 // This constant fills the desks array to this limit
-const DESKS_IN_CLASS_COUNT = 19;
+const DESKS_IN_CLASS_COUNT = 16;
 
 function init() {
     addEventListeners();
