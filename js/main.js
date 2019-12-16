@@ -38,9 +38,7 @@ function formSubmitHandler(event) {
     missingIdxs = missingIdxs.map(Number);
     gMissingDesks = missingIdxs;
     showLoading();
-    setTimeout(() => {
-        handleAllState();
-    }, 1000);
+    setTimeout(handleAllState, 1000);
 }
 
 function showLoading() {
@@ -109,7 +107,7 @@ function getDesksCount() {
     return Math.ceil(gStudentNames.length / 2);
 }
 
-function createDesk(name1, name2) {
+function createDesk(name1 = 'empty', name2 = 'empty') {
     return {
         left: name1, right: name2
     }
