@@ -1,9 +1,21 @@
-let gStudentNames = ["Alina Boshkov", "Alon Tal", "Arkadi Zvalinov", "Ben Yager", "Coral Solomon", "Daniil Glezer", "Edgar", "Eyal Ganor", "Gilad Bergmann", "Igor", "Ilya Levin", "Lior BenHaim", "Mai Aloni", "Margad T", "Mor Zeevi", "Nevo Kotlovsky", "Ohad Avidar", "Paolo Groppi", "Roy Amar", "shay rosenthal", "Shmuel Elkis", "Tal Azenkot", "Tal Kabesa", "Tal Mashiah", "vlad", "Yael Fisher", "Yael Shenker", "Yanir Shaked", "Yoad Gantz"];
+let gStudentNames = ["Alina Boshkov", "Alon Tal", "Arkadi Zvalinov", "Ben Yager", "Coral Solomon",
+    "Daniil Glezer", "Edgar", "Eyal Ganor", "Gilad Bergmann", "Igor", "Ilya Levin",
+    "Lior BenHaim", "Mai Aloni", "Margad T", "Mor Zeevi", "Nevo Kotlovsky",
+    "Ohad Avidar", "Paolo Groppi", "Roy Amar", "shay rosenthal", "Shmuel Elkis", "Tal Azenkot", "Tal Kabesa", "Tal Mashiah", "vlad", "Yael Fisher", "Yael Shenker", "Yanir Shaked", "Yoad Gantz"];
+let gStudentNamesGalitz = ['tal', 'yoni', 'alon', 'elior', 'nevo', 'itay', 'yaron', 'meital', 'chen', 'asaf',
+    'tal', 'yoni', 'alon', 'elior', 'nevo', 'itay', 'yaron', 'meital', 'chen'];
+
 let gDesks = null;
+let gDesksGalitz = null;
+
 let gIsLoading = false;
+
 let gMissingDesks = [];
+let gMissingDesksGalitz = [];
+
 // This constant fills the desks array to this limit
 const DESKS_IN_CLASS_COUNT = 16;
+const DESKS_IN_CLASS_COUNT_GALITZ = 6;
 
 function init() {
     addEventListeners();
@@ -13,10 +25,12 @@ function init() {
 function handleAllState() {
     hideLoading();
     shuffleCollection(gStudentNames);
-    gStudentNames = studentNamesToDisplay();
-    gDesks = createDesks();
+    shuffleCollection(gStudentNamesGalitz);
+    gDesks = createDesks(gStudentNames, gMissingDesks);
+    gDesksGalitz = createDesks(gStudentNamesGalitz, gMissingDesksGalitz);
     // shuffleCollection(gDesks);
-    renderDesks();
+    renderDesks(gDesks, '.desks-zone');
+    renderDesks(gDesksGalitz, '.desks-zone2');
 }
 
 function addEventListeners() {
@@ -58,36 +72,44 @@ function onUserInputSubmit() {
 function checkIsEmptyDesk(desk) {
     return desk.left === 'empty' && desk.right === 'empty';
 }
-function renderDesks() {
-    const desksHTMLs = gDesks.map(desk => {
-        const isEmptyDesk = checkIsEmptyDesk(desk)
+function renderDesks(desks, elSelector) {
+    const desksHTMLs = desks.map(desk => {
+        // const isEmptyDesk = checkIsEmptyDesk(desk)
         let classStr = 'desk ';
-        classStr += (isEmptyDesk) ? 'empty' : '';
+        // classStr += (isEmptyDesk) ? 'empty' : '';
         return `
         <div class="${classStr}">
             <div class="name-container">${desk.left}</div>
             <div class="name-container">${desk.right}</div>
         </div>`
     });
-    document.querySelector('.desks-zone').innerHTML = desksHTMLs.join('');
+    document.querySelector(elSelector).innerHTML = desksHTMLs.join('');
 }
 
-function studentNamesToDisplay() {
-    return gStudentNames.map(name => {
-        return name.charAt(0).toUpperCase() + name.slice(1);
-    });
-}
-
-function createDesks() {
-    const desksCount = getDesksCount();
+function createDesks(studentNames) {
+    const desksCount = getDesksCount(studentNames);
     let desks = [];
     for (let i = 0; i < desksCount; i++) {
-        const leftName = gStudentNames[i * 2];
-        const rightName = gStudentNames[i * 2 + 1];
+        const leftName = studentNames[i * 2];
+        const rightName = studentNames[i * 2 + 1];
         desks.push(createDesk(leftName, rightName));
     }
-    insertMissingDesks(desks);
-    completeDeskCount(desks);
+    // insertMissingDesks(desks);
+    // completeDeskCount(desks);
+    return desks;
+}
+
+function createGalitzDesks(studentNames) {
+    const desksCount = getDesksCount(studentNames);
+    let desks = [];
+    for (let i = 0; i < desksCount; i++) {
+        const leftName = studentNames[i * 3];
+        const middleName = studentNames[i * 3 + 1];
+        const rightName = studentNames[i * 3 + 2];
+        desks.push(createDesk(leftName, middleName, rightName));
+    }
+    // insertMissingDesks(desks);
+    // completeDeskCount(desks);
     return desks;
 }
 
@@ -103,13 +125,19 @@ function completeDeskCount(desks) {
     }
 }
 
-function getDesksCount() {
-    return Math.ceil(gStudentNames.length / 2);
+function getDesksCount(studentNames) {
+    return Math.ceil(studentNames.length / 2);
 }
 
 function createDesk(name1 = 'empty', name2 = 'empty') {
     return {
         left: name1, right: name2
+    }
+}
+
+function createGalitzDesk(name1 = 'empty', name2 = 'empty', name3 = 'empty') {
+    return {
+        left: name1, middle: name2, right: name3
     }
 }
 function shuffleCollection(collection) {

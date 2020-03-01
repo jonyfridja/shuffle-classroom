@@ -1,13 +1,15 @@
 body {
     margin: 0;
+    font-family: sans-serif;
+    font-size: 16px;
 }
 
 .classroom {
     display: flex;
     flex-direction: column;
-    height: 70vh;
-    background-color: green;
-    padding: 10px;
+    height: 55vh;
+    background-color: lightgray;
+    padding: 15px;
     text-align: center;
 }
 
@@ -34,46 +36,63 @@ body {
 }
 
 .podium {
-    background-color: yellow;
+    background-color: #000289;
     flex-basis: 200px;
+    color: white;
 }
 
 .entrance {
-    background-color: rgb(223, 100, 100);
-    color: black;
+    background-color: rgb(117, 0, 0);
+    color: white;
     flex-basis: 200px;
 }
 
 .monitor {
     flex: 1;
-    background-color: turquoise;
+    background-color: black;
+    color: white;
 }
 
 .desks-zone {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-gap: 10px;
     padding: 10px;
+}
+
+.f2-classroom .desks-zone {
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+}
+
+.galitz-classroom .desks-zone {
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 15px;
 }
 
 .desk {
     padding: 5px;
     display: flex;
-    justify-content: space-around;
-    background-color: rgb(124, 121, 121);
-    border: 2px solid white;
-    color: white;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #8e8e8e;
 }
 
 .desk.empty {
     background-color: #fff;
-    
 }
 
-.name-container {
+.name-container, .seat {
     border-radius: 200px;
-    border: 1px solid white;
+    border: 1px solid black;
     padding: 5px;
+    text-transform: capitalize;
+    flex: 1 1 30%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.seat:not(:last-child) {
+    margin-right: 5px;
 }
 
 .user-input {
